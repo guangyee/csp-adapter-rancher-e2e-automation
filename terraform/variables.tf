@@ -1,3 +1,28 @@
+variable "aws_access_key" {
+  type = string
+  description = "AWS access key"
+}
+
+variable "aws_secret_key" {
+  type = string
+  description = "AWS secret key."
+}
+
+variable "aws_region" {
+  type = string
+  description = "AWS region to launch resources"
+}
+
+variable "aws_az1" {
+  type = string
+  description = "AWS availability zone 1"
+}
+
+variable "aws_az2" {
+  type = string
+  description = "AWS availability zone 2"
+}
+
 variable "resource_owner" {
   type = string
   description = "email address of the owning user - used to identify resource owner"
@@ -6,21 +31,6 @@ variable "resource_owner" {
 variable "resource_prefix"{
   type = string
   description = "prefix of the resources that will be created under this module"
-}
-
-variable "cluster_role_name" {
-  type = string
-  description = "The name of the role to use for the eks cluster role"
-}
-
-variable "node_role_name" {
-  type = string
-  description = "The name of the role to use for the eks cluster nodes"
-}
-
-variable "vpc_id"{
-  type = string
-  description = "The id of the vpc to create the cluster in"
 }
 
 variable "zone_name"{
@@ -51,4 +61,9 @@ variable "eks_version"{
   type = string
   description = "the eks version. Must be compatable with cert-manager/rancher version"
   default = "1.24"
+}
+
+variable "rancher_server_admin_password" {
+  type        = string
+  description = "Admin password to use for Rancher server bootstrap, min. 12 characters"
 }

@@ -1,39 +1,30 @@
-data aws_iam_role cluster_role{
-  name = var.cluster_role_name
-}
-
-data aws_iam_role node_role{
-  name = var.node_role_name
-}
-
-data aws_subnets subnets{
-  filter{
-    name   = "vpc-id"
-    values = [var.vpc_id]
-  }
-  filter{
-    name = "availability-zone"
-    values = ["us-east-1a", "us-east-1b","us-east-1c","us-east-1d","us-east-1f"]
-  }
-}
-
 resource "aws_eks_cluster" "main_cluster" {
   name     = "${var.resource_prefix}-cluster"
-  role_arn = data.aws_iam_role.cluster_role.arn
+  role_arn = aws_iam_role.main_cluster_role.arn
   vpc_config {
-    subnet_ids = toset(data.aws_subnets.subnets.ids)
+    subnet_ids = [
+      aws_subnet.subnet1.id,
+      aws_subnet.subnet2.id,
+    ]
   }
   version = var.eks_version
+
   tags = {
     "owner": var.resource_owner
   }
+  depends_on = [aws_iam_role_policy_attachment.main_cluster-AmazonEKSClusterPolicy]
 }
 
 resource aws_eks_node_group "main_node_group"{
   cluster_name  = aws_eks_cluster.main_cluster.name
   node_group_name = "${var.resource_prefix}-workers"
-  node_role_arn = data.aws_iam_role.node_role.arn
-  subnet_ids    = toset(data.aws_subnets.subnets.ids)
+  node_role_arn = aws_iam_role.nodes.arn
+
+  subnet_ids = [
+      aws_subnet.subnet1.id,
+      aws_subnet.subnet2.id
+  ]
+
   scaling_config {
     desired_size = 2
     max_size     = 2
@@ -45,6 +36,13 @@ resource aws_eks_node_group "main_node_group"{
   tags = {
     "owner": var.resource_owner
   }
+
+  depends_on = [
+    aws_iam_role_policy_attachment.nodes-AmazonEKSWorkerNodePolicy,
+    aws_iam_role_policy_attachment.nodes-AmazonEKS_CNI_Policy,
+    aws_iam_role_policy_attachment.nodes-AmazonEC2ContainerRegistryReadOnly,
+    aws_internet_gateway.igw
+  ]
 }
 
 data aws_eks_cluster_auth main_auth{
