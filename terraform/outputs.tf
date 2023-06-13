@@ -1,5 +1,5 @@
 output "kubeconfig-generate" {
-  value = "Run the following command to generate a kubeconfig: aws eks update-kubeconfig --region ${var.aws_region} --name  ${aws_eks_cluster.main_cluster.name} --kubeconfig kubeconfig.yml"
+  value = "Run the following command to generate a kubeconfig: aws eks update-kubeconfig --region ${var.aws_region} --name  ${aws_eks_cluster.main_cluster.name} --kubeconfig kubeconfig-e2e.yml"
 }
 
 output rancher_hostname {

@@ -43,6 +43,10 @@ resource aws_eks_node_group "main_node_group"{
     aws_iam_role_policy_attachment.nodes-AmazonEC2ContainerRegistryReadOnly,
     aws_internet_gateway.igw
   ]
+
+  provisioner "local-exec" {
+    command = "aws eks update-kubeconfig --region ${var.aws_region} --name ${aws_eks_cluster.main_cluster.name} --kubeconfig kubeconfig-e2e.yml"
+  }
 }
 
 data aws_eks_cluster_auth main_auth{
