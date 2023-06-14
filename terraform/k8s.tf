@@ -76,6 +76,10 @@ resource "helm_release" "rancher"{
     name = "global.cattle.psp.enabled"
     value = false
   }
+  set {
+    name  = "bootstrapPassword"
+    value = var.rancher_server_admin_password
+  }
   values = [yamlencode({
   extraEnv: [
     {
