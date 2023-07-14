@@ -3,21 +3,25 @@ module csp-adapter-rancher-e2e-automation
 go 1.19
 
 replace (
-	github.com/rancher/rancher/pkg/apis => github.com/rancher/rancher/pkg/apis v0.0.0-20230525094739-ff2e09449efc
-	github.com/rancher/rancher/pkg/client => github.com/rancher/rancher/pkg/client v0.0.0-20230525094739-ff2e09449efc
+	github.com/rancher/rancher/pkg/apis => github.com/rancher/rancher/pkg/apis v0.0.0-20230623185910-3f86d2ecb270
+	github.com/rancher/rancher/pkg/client => github.com/rancher/rancher/pkg/client v0.0.0-20230623185910-3f86d2ecb270
 	k8s.io/apimachinery => k8s.io/apimachinery v0.25.4
 	k8s.io/client-go => github.com/rancher/client-go v1.25.4-rancher1
 )
 
 // Currently based on the commit v0.0.0-20230525094739-ff2e09449efc dated June 2nd, 2023
+// Moved to v0.0.0-20230623185910-3f86d2ecb270 dated June 23rd, 2023
 require (
-	github.com/rancher/rancher v0.0.0-20230525094739-ff2e09449efc
+	github.com/rancher/rancher v0.0.0-20230623185910-3f86d2ecb270
 	github.com/stretchr/testify v1.8.3
 	k8s.io/api v0.25.4
 	k8s.io/apimachinery v0.25.4
 )
 
+require github.com/rancher/norman v0.0.0-20230426211126-d3552b018687
+
 require (
+	github.com/Masterminds/semver/v3 v3.2.0 // indirect
 	github.com/aws/aws-sdk-go v1.44.266 // indirect
 	github.com/beorn7/perks v1.0.1 // indirect
 	github.com/blang/semver v3.5.1+incompatible // indirect
@@ -44,30 +48,33 @@ require (
 	github.com/jmespath/go-jmespath v0.4.0 // indirect
 	github.com/josharian/intern v1.0.0 // indirect
 	github.com/json-iterator/go v1.1.12 // indirect
+	github.com/kr/fs v0.1.0 // indirect
 	github.com/mailru/easyjson v0.7.7 // indirect
 	github.com/matttproud/golang_protobuf_extensions v1.0.4 // indirect
 	github.com/modern-go/concurrent v0.0.0-20180306012644-bacd9c7ef1dd // indirect
 	github.com/modern-go/reflect2 v1.0.2 // indirect
 	github.com/munnerz/goautoneg v0.0.0-20191010083416-a7dc8b61c822 // indirect
 	github.com/pkg/errors v0.9.1 // indirect
+	github.com/pkg/sftp v1.13.5 // indirect
 	github.com/pmezard/go-difflib v1.0.0 // indirect
+	github.com/prometheus-operator/prometheus-operator/pkg/apis/monitoring v0.52.0 // indirect
 	github.com/prometheus/client_golang v1.14.0 // indirect
 	github.com/prometheus/client_model v0.3.0 // indirect
 	github.com/prometheus/common v0.37.0 // indirect
 	github.com/prometheus/procfs v0.8.0 // indirect
 	github.com/rancher/aks-operator v1.1.1-rc2 // indirect
-	github.com/rancher/apiserver v0.0.0-20230120214941-e88c32739dc7 // indirect
+	github.com/rancher/apiserver v0.0.0-20230515173455-c3b182bdbf7d // indirect
 	github.com/rancher/eks-operator v1.2.1 // indirect
-	github.com/rancher/fleet/pkg/apis v0.0.0-20230516111835-f52a0e7d38af // indirect
+	github.com/rancher/fleet/pkg/apis v0.0.0-20230605094423-ddbb43505e80 // indirect
 	github.com/rancher/gke-operator v1.1.5 // indirect
 	github.com/rancher/lasso v0.0.0-20230428185353-36908edf817b // indirect
-	github.com/rancher/norman v0.0.0-20230328153514-ae12f166495a // indirect
 	github.com/rancher/rancher/pkg/apis v0.0.0 // indirect
 	github.com/rancher/rke v1.4.6-rc3 // indirect
 	github.com/rancher/system-upgrade-controller/pkg/apis v0.0.0-20210727200656-10b094e30007 // indirect
 	github.com/rancher/wrangler v1.1.1 // indirect
 	github.com/sirupsen/logrus v1.9.2 // indirect
 	github.com/spf13/pflag v1.0.5 // indirect
+	golang.org/x/crypto v0.6.0 // indirect
 	golang.org/x/net v0.10.0 // indirect
 	golang.org/x/oauth2 v0.0.0-20220628200809-02e64fa58f26 // indirect
 	golang.org/x/sys v0.8.0 // indirect
@@ -85,6 +92,7 @@ require (
 	k8s.io/client-go v12.0.0+incompatible // indirect
 	k8s.io/component-base v0.25.4 // indirect
 	k8s.io/klog/v2 v2.90.1 // indirect
+	k8s.io/kube-aggregator v0.25.4 // indirect
 	k8s.io/kube-openapi v0.0.0-20230308215209-15aac26d736a // indirect
 	k8s.io/kubernetes v1.25.4 // indirect
 	k8s.io/utils v0.0.0-20230209194617-a36077c30491 // indirect

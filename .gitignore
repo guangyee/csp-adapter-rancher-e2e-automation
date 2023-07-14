@@ -32,3 +32,15 @@ override.tf.json
 # Ignore CLI configuration files
 .terraformrc
 terraform.rc
+
+# Ignore the repo cloned by the deployment scripts
+csp-rancher-usage-operator
+
+# Ignore the cattle-config-e2e.yaml file created by the terraform scripts
+cattle-config-e2e.yaml
+
+# Ignore the kubeconfig yaml file for the EKS cluster
+kubeconfig-e2e.yml
+
+# Ignore the downloaded CA certificate for tls-rancher
+ca-additional.pem
