@@ -44,3 +44,5 @@ kubeconfig-e2e.yml
 
 # Ignore the downloaded CA certificate for tls-rancher
 ca-additional.pem
+
+.terraform.lock.hcl

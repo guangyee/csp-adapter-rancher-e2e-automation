@@ -36,3 +36,12 @@ eks_version = "1.24"
 
 # Admin password to use for Rancher server bootstrap, min. 12 characters
 rancher_server_admin_password = "r@ncher1234!"
+
+# Rancher image repository
+rancher_image_repo = "rancher/rancher"
+
+# Rancher image tag - optional. If not specified, it would be the same as the Rancher chart version.
+rancher_image_tag = ""
+
+# Rancher image pull policy
+rancher_image_pull_policy = "IfNotPresent"

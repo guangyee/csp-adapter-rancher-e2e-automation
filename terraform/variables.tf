@@ -105,3 +105,21 @@ variable "namespace" {
   description = "Namespace for the csp-rancher-usage-operator and csp-billing-adapter install"
   default="cattle-csp-billing-adapter-system"
 }
+
+variable "rancher_image_repo" {
+  type = string
+  description = "Rancher image repository"
+  default="rancher/rancher"
+}
+
+variable "rancher_image_tag" {
+  type = string
+  description = "Rancher image tag - optional. If not specified, it would be the same as the Rancher chart version."
+  default = ""
+}
+
+variable "rancher_image_pull_policy" {
+  type = string
+  description = "Rancher image pull policy"
+  default="IfNotPresent"
+}

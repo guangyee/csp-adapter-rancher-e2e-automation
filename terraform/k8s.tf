@@ -93,6 +93,18 @@ resource "helm_release" "rancher"{
     name = "installCRDs"
     value = "true"
   }
+  set {
+    name = "rancherImage"
+    value = var.rancher_image_repo
+  }
+  set {
+    name = "rancherImageTag"
+    value = var.rancher_image_tag == "" ? var.rancher_version : var.rancher_image_tag
+  }
+  set {
+    name = "rancherImagePullPolicy"
+    value = var.rancher_image_pull_policy
+  }
   values = [yamlencode({
   extraEnv: [
     {
